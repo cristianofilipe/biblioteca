@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Ignore o autoload para arquivos estáticos
+    RewriteRule ^(?:css|js|images)/ - [L]
+
+    # Roteamento para index.php
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,NC]
+</IfModule>

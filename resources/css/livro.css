@@ -1,0 +1,99 @@
+body {
+    display: flex;
+    background: #f8f7f7;
+
+}
+
+.contenti {
+
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenti header {
+    position: relative;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.contenti header::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    background: #4070f4;
+    border-radius: 7px;
+    left: 0;
+}
+
+.contenti form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.contenti form .detalhes {
+    margin-top: 30px;
+}
+
+.contenti form .title {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+
+}
+
+.contenti form .fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form .fields .input-field {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3 - 15px);
+    margin: 4px 0;
+}
+
+.input-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.input-field input {
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #3333;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.input-field input[type="date"] {
+    color: #707070;
+}
+
+.input-field input[type="date"]:valid {
+    color: #333;
+}

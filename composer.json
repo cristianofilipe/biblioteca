@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "core\\": "core"
+        }
+    },
+    "require": {
+        "dompdf/dompdf": "^2.0",
+        "phpmailer/phpmailer": "^6.9",
+        "firebase/php-jwt": "^6.10"
+    }
+}

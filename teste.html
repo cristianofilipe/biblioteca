@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Pesquisar</label>
+    <input type="text" name="pesquisa" id="pesquisa" onkeyup="pesquisar(this.value)">
+    <br><br>
+
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>titulo</th>
+            <th>volume</th>
+            <th>editora</th>
+            <th>ano de publicação</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+
+        const tbody = document.getElementsByTagName("tbody");
+
+        async function pesquisar(valor) {
+            await fetch("http://localhost/sistema-biblioteca2/livro/get?titulo="+valor, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(data => render(data)) 
+            .catch(err => console.error(err))
+        }
+
+        function render(datas) {
+
+            const dataArray = Array.isArray(datas.data) ? datas.data: [datas.data];
+
+            dataArray.forEach(data => {
+                const row = document.createElement("tr");
+                const columnId = document.createElement("td");
+                columnId.innerHTML = data.id_livro;
+
+                const columnTitle = document.createElement("td");
+                columnTitle.innerHTML = data.titulo;
+
+                const columnVolume = document.createElement("td");
+                columnVolume.innerHTML = data.volume;
+
+                const columnEditora = document.createElement("td");
+                columnEditora.innerHTML = data.editora;
+
+                const columnAno = document.createElement("td");
+                columnAno.innerHTML = data.ano_pub;
+
+                row.appendChild(columnId);
+                row.appendChild(columnTitle);
+                row.appendChild(columnVolume);
+                row.appendChild(columnEditora);
+                row.appendChild(columnAno);
+
+                tbody[0].appendChild(row);
+            });
+        } 
+
+        window.onload = pesquisar("");
+    </script>
+</body>
+</html>
